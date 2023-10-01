@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 
-const Login: React.FC = () => {
+const Registration: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const handleLogin = async () => {
+  const handleRegistration = async () => {
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-      // Login successful
+      await auth.createUserWithEmailAndPassword(email, password);
+      // Registration successful
     } catch (error) {
       console.error(error.message);
     }
@@ -16,7 +16,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Registration</h2>
       <input
         type="email"
         placeholder="Email"
@@ -29,9 +29,9 @@ const Login: React.FC = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleRegistration}>Register</button>
     </div>
   );
 };
 
-export default Login;
+export default Registration;

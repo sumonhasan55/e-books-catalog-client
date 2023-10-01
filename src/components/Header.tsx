@@ -1,6 +1,24 @@
+import React, { useState, useEffect } from 'react';
+import { auth } from '../firebase';
 
 
 const Header = () => {
+    const [loggedIn, setLoggedIn] = useState<boolean>(!!auth.currentUser);
+     useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
     return (
         <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -22,6 +40,22 @@ const Header = () => {
             <li><a href="/">About</a></li>
             </ul>
           </div>
+          <div className="navbar-end">
+        {loggedIn ? (
+          <li>
+            <button onClick={handleLogout}>Logout</button>
+          </li>
+        ) : (
+          <>
+            <li>
+              <a href="/registration">Registration</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+          </>
+        )}
+        </div>
           <a className="text-xl normal-case btn btn-ghost">E_Books_Catalog</a>
         </div>
         <div className="hidden navbar-center lg:flex">
@@ -40,7 +74,20 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a href="/login" className="btn">Login</a>
+        {loggedIn ? (
+          <li>
+            <button onClick={handleLogout}>Logout</button>
+          </li>
+        ) : (
+          <>
+            <li>
+              <a href="/registration">Registration</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+          </>
+        )}
         </div>
       </div>
     );
