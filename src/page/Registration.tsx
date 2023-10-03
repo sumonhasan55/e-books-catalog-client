@@ -1,35 +1,10 @@
-import React, { useState } from 'react';
-import { auth } from '../firebase';
+import React from 'react';
 
-const Registration: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
-  const handleRegistration = async () => {
-    try {
-      await auth.createUserWithEmailAndPassword(email, password);
-      // Registration successful
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
+const Registration = () => {
   return (
     <div>
-      <h2>Registration</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleRegistration}>Register</button>
+      <h1>Registration</h1>
+      
     </div>
   );
 };
