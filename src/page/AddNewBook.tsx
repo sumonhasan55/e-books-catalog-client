@@ -20,7 +20,7 @@ export default function AddNewBook() {
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    dispatch(addBook({ id: books[books.length - 1].id + 1, title, author, genre, publicationDate, reviews }))
+    dispatch(addBook({ id: books[books?.length - 1]?.id + 1, title, author, genre, publicationDate, reviews }))
     navigate( "/newBooks")
 
   }
@@ -51,7 +51,7 @@ export default function AddNewBook() {
         </div>
         <div className="my-2">
           <p className="font-bold ">Reviews:</p>
-          <input placeholder="publicationsDate" type="text" name="reviews" className="form-control" onChange={e => setReviews(e.target.value)} />
+          <input placeholder="Review" type="text" name="reviews" className="form-control" onChange={e => setReviews(e.target.value)} />
         </div>
         <button className="btn btn-neutral"><input type="submit" /></button>
       </form>

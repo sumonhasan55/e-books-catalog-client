@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Header from "../components/Header";
+import { deleteBook } from "../redux/features/book/booksSlice";
+
 
 
 
 const NewBooks = () => {
     const books =useAppSelector((state)=>state.books);
+    const dispatch = useAppDispatch()
+        
+    const handleDeleteBook =(id: number)=>{
+
+        dispatch(deleteBook({id:id}))
+        console.log("delete book")
+        
+
+
+    }
     console.log(books)
     return (
         <div>
@@ -32,8 +44,8 @@ const NewBooks = () => {
                             <td>{book?.genre}</td>
                             <td>{book?.publicationDate}</td>
                             <td>
-                                <button className="btn btn-sm btn-primary">Edit</button>
-                                <button className="btn btn-sm btn-warning ms-2">Delete</button>
+                                <Link to={`/updateBook/${book?.id}`}><button className="btn btn-sm btn-primary">Edit</button></Link>
+                                <button onClick={()=>handleDeleteBook(book?.id)} className="btn btn-sm btn-warning ms-2">Delete</button>
                             </td>
 
                         </tr>
