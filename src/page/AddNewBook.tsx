@@ -1,70 +1,61 @@
-// AddNewBookForm.tsx
-import React, { useState } from 'react';
 
-const AddNewBookForm: React.FC = () => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [genre, setGenre] = useState('');
-  const [publicationDate, setPublicationDate] = useState('');
-  const [notification, setNotification] = useState('');
+import { useAppDispatch, useAppSelector } from "../redux/hooks"
+import { addBook } from "../redux/features/book/booksSlice"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import Header from "../components/Header"
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
 
-    // Send the book data to your backend or perform any necessary API call here
-    try {
-      // Example: Send a POST request to your API
-      // const response = await fetch('/api/add-book', {
-      //   method: 'POST',
-      //   body: JSON.stringify({ title, author, genre, publicationDate }),
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
+export default function AddNewBook() {
 
-      // Handle success or error responses here
-      // const data = await response.json();
-      // if (response.ok) {
-      //   setNotification('Book added successfully.');
-      // } else {
-      //   setNotification('Failed to add the book. Please try again.');
-      // }
-      setNotification('Book added successfully.');
-    } catch (error) {
-      console.error(error);
-      setNotification('Failed to add the book. Please try again.');
-    }
-  };
+
+  const dispatch = useAppDispatch()
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [genre, setGenre] = useState('')
+  const [publicationDate, setPublicatioDate] = useState('')
+  const [reviews, setReviews] = useState('')
+  const books = useAppSelector((state) => state.books);
+  const navigate =useNavigate()
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    dispatch(addBook({ id: books[books.length - 1].id + 1, title, author, genre, publicationDate, reviews }))
+    navigate( "/newBooks")
+
+  }
+
 
   return (
-    <div className='text-center '>
-      <h2 className='my-8 text-3xl font-bold text-center ' >Add New Book</h2>
-      <form onSubmit={handleSubmit} className='w-1/3 p-8 mx-auto my-10 border-2 rounded-xl border-neutral'>
-        <div  className='my-3 font-bold'>
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div className='my-3 font-bold'>
-          <label>Author:</label>
-          <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
-        </div>
-        <div className='my-3 font-bold'>
-          <label>Genre:</label>
-          <input type="text" value={genre} onChange={(e) => setGenre(e.target.value)} />
-        </div>
-        <div className='my-3 font-bold'>
-          <label>Publication Date:</label>
-          <input
-            type="text"
-            value={publicationDate}
-            onChange={(e) => setPublicationDate(e.target.value)}
-          />
-        </div>
-        <button className='btn btn-neutral' type="submit">Submit</button>
-      </form>
-      {notification && <div>{notification}</div>}
-    </div>
-  );
-};
+    <>
+    <Header/>
+    <div className="w-1/3 p-10 mx-auto my-20 border-2 border-black rounded-xl ">
+      <h1 className="text-3xl font-bold text-center">Add A New Books</h1>
+      <form onSubmit={handleSubmit}>
 
-export default AddNewBookForm;
+        <div className="my-2">
+          <p className="font-bold ">Title:</p>
+          <input placeholder="Title" name="title" className="form-control" onChange={e => setTitle(e.target.value)} />
+        </div>
+        <div className="my-2">
+          <p className="font-bold ">Author:</p>
+          <input placeholder="Author" name="author" className="form-control" onChange={e => setAuthor(e.target.value)} />
+        </div>
+        <div className="my-2">
+          <p className="font-bold ">Genre:</p>
+          <input placeholder="Genre" type="text" name="genre" className="form-control" onChange={e => setGenre(e.target.value)} />
+        </div>
+        <div className="my-2">
+          <p className="font-bold ">PublicationsDate:</p>
+          <input placeholder="publicationsDate" type="date" name="publicationDate" className="form-control" onChange={e => setPublicatioDate(e.target.value)} />
+        </div>
+        <div className="my-2">
+          <p className="font-bold ">Reviews:</p>
+          <input placeholder="publicationsDate" type="text" name="reviews" className="form-control" onChange={e => setReviews(e.target.value)} />
+        </div>
+        <button className="btn btn-neutral"><input type="submit" /></button>
+      </form>
+    </div>
+    </>
+  )
+}

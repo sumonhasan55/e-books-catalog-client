@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 
 const Login = () => {
   return (
    <>
+     <Header/>
    <div className="min-h-screen hero bg-base-200">
   <div className="flex-col hero-content lg:flex-row-reverse">
     <div className="text-center lg:text-left">

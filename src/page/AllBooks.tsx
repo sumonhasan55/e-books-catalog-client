@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { useGetBooksQuery } from "../redux/api/api";
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Header from "../components/Header";
 
 
 const AllBooks = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const { data, isLoading, isError, error } = useGetBooksQuery(searchQuery);
-    console.log(data)
+    console.log(data,error,isError,isLoading)
     return (
         <div>
+              <Header/>
             <h1 className="my-8 text-5xl font-bold text-center">This is all books Pages</h1>
 
             <div className="">
