@@ -14,17 +14,15 @@ const NewBooks = () => {
 
         dispatch(deleteBook({id:id}))
         console.log("delete book")
-        
-
 
     }
     console.log(books)
     return (
         <div>
               <Header/>
-              <h1 className=" text-center my-5 font-bold text-3xl">New Book List!</h1>
+              <h1 className="my-5 text-3xl font-bold text-center ">New Book List!</h1>
             
-            <table className="table my-6 w-full">
+            <table className="table w-full my-6">
                 <thead>
                     <tr>
                     <th>Id</th>

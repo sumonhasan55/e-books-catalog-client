@@ -29,10 +29,20 @@ const bookSlice = createSlice({
         return state.filter(f=>f.id !== id);
       }
 
-    }
+    },
+    getSingleBook: (state, action) => {
+      const { id } = action.payload;
+      // You can set the selected book in your application state
+      // Here, you can log it for demonstration purposes
+      const selectedBook = state.find((book) => book.id === id);
+      console.log(selectedBook);
+    },
+
+
+   
 
   }
 })
 
-export const {addBook,updateBook,deleteBook} =bookSlice.actions;
+export const {addBook,updateBook,deleteBook,getSingleBook} =bookSlice.actions;
 export default bookSlice.reducer;

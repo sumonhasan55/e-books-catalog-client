@@ -2,7 +2,7 @@ import '../index.css'
 
 const Footer = () => {
     return (
-        <footer className="p-10 rounded footer footer-center bg-base-200 text-base-content">
+        <footer className="p-10 text-white rounded footer footer-center bg-neutral-900 text-base-content">
         <nav className="grid grid-flow-col gap-4">
           <a className="link link-hover">About us</a> 
           <a className="link link-hover">Contact</a> 

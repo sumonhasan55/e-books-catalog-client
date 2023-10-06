@@ -2,6 +2,7 @@
 export const bookDataList = [
     {
       "id": 1,
+      "image": "https://i.ibb.co/qNVcBFQ/top-Books-4.jpg",
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
       "genre": "Fiction",
@@ -10,7 +11,8 @@ export const bookDataList = [
     },
     {
       "id": 2,
-      "title": "1984",
+      "image": "https://i.ibb.co/HdBymyV/top-Books-3.jpg" ,
+      "title": "1984 the Years Goals",
       "author": "George Orwell",
       "genre": "Dystopian Fiction",
       "publicationDate": "1949-06-08",
@@ -19,6 +21,7 @@ export const bookDataList = [
     },
     {
       "id": 3,
+      "image": "https://i.ibb.co/GRZswrq/top-Books-2.jpg",
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "genre": "Fiction",
@@ -27,6 +30,7 @@ export const bookDataList = [
     },
     {
       "id": 4,
+      "image": "https://i.ibb.co/mb6tHNb/top-Books-1.webp" ,
       "title": "The Hobbit",
       "author": "J.R.R. Tolkien",
       "genre": "Fantasy",
@@ -35,6 +39,7 @@ export const bookDataList = [
     },
     {
       "id": 5,
+      "image": "https://i.ibb.co/C683LQf/top-Books-1.png",
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
       "genre": "Classic Literature",
@@ -43,6 +48,43 @@ export const bookDataList = [
     },
     {
       "id": 6,
+      "image": "https://i.ibb.co/RbdtXRc/top-Books-1.jpg",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-Age Fiction",
+      "publicationDate": "1951-07-16",
+      "reviews":"A thought-provoking and chilling portrayal of a totalitarian society."
+    },
+    {
+      "id": 7,
+      "image": "https://i.ibb.co/PmVqL4X/top-Books-7.jpg",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-Age Fiction",
+      "publicationDate": "1951-07-16",
+      "reviews":"A thought-provoking and chilling portrayal of a totalitarian society."
+    },
+    {
+      "id": 8,
+      "image": "https://i.ibb.co/PmVqL4X/top-Books-7.jpg" ,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-Age Fiction",
+      "publicationDate": "1951-07-16",
+      "reviews":"A thought-provoking and chilling portrayal of a totalitarian society."
+    },
+    {
+      "id": 9,
+      "image": "https://i.ibb.co/RbdtXRc/top-Books-1.jpg",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-Age Fiction",
+      "publicationDate": "1951-07-16",
+      "reviews":"A thought-provoking and chilling portrayal of a totalitarian society."
+    },
+    {
+      "id": 10,
+      "image": "https://i.ibb.co/PxpfXy0/top-Books-6.jpg",
       "title": "The Catcher in the Rye",
       "author": "J.D. Salinger",
       "genre": "Coming-of-Age Fiction",
@@ -50,5 +92,7 @@ export const bookDataList = [
       "reviews":"A thought-provoking and chilling portrayal of a totalitarian society."
     }
   ]
+
+
   
 
