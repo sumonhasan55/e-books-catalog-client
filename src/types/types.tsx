@@ -3,7 +3,7 @@
 
 // Define the book data type
 export interface Book {
-  id: number;
+  id: string | number | undefined;
   title: string;
   author: string;
   genre: string;

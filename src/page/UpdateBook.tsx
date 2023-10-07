@@ -9,8 +9,12 @@ import { updateBook } from "../redux/features/book/booksSlice";
 const UpdateBook = () => {
     const { id } = useParams()
     const books = useAppSelector((state) => state.books);
-    const existingBook = books.filter(book => book?.id == id);
-    const { title, author, genre, publicationDate, reviews } = existingBook[0]
+    const existingBook = books.find((book) => book?.id === Number(id));
+
+
+
+
+    const { title, author, genre, publicationDate, reviews } = existingBook || {};
     const [utitle, setTitle] = useState(title)
     const [uauthor, setAuthor] = useState(author)
     const [ugenre, setGenre] = useState(genre)
@@ -74,3 +78,11 @@ const UpdateBook = () => {
 };
 
 export default UpdateBook;
+
+
+
+
+
+
+
+

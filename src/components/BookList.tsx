@@ -15,14 +15,14 @@ const NewBooks = () => {
   }
   console.log(books)
   return (
-    <div >
+    <div className="mx-auto " >
 
-      <h1 className='my-10 font-mono text-2xl font-bold text-center font md:text-5xl'>Top 10 Recently Added Books List </h1>
-      <div className="grid items-center w-full grid-cols-1 gap-4 mx-auto my-5 md:grid-cols-3">
+      <h1 className='my-10 font-mono text-3xl font-extrabold text-center md:font-bold font md:text-5xl'>Top 10 Recently Added Books List </h1>
+      <div className="grid items-center w-full grid-cols-1 mx-auto my-8 ml-12 md:gap-4 md:grid-cols-3">
 
         {books.map((book, id) => (
 
-          <div key={id} className="my-10 shadow-xl card w-96 bg-base-100 hover:bg-neutral-900 hover:text-white ">
+          <div key={id} className="my-10 border border-b-8 border-r-8 shadow-xl card w-96 bg-base-100 hover:bg-neutral-900 hover:text-white border-neutral-900 hover:border-teal-700 hover:border-b-8 hover:border-r-8 ">
 
             <div className="card-body">
               <Link to={`/bookDetails/${book?.id}`}><h1 className="text-2xl font-bold">{book?.title}</h1></Link>
@@ -42,7 +42,7 @@ const NewBooks = () => {
         ))}
       </div>
 
-      <Link to="/allbooks" className="my-3 btn btn-success">AllBooks </Link>
+      <Link to="/allbooks" className="w-full bg-black btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg" >AllBooks </Link>
 
     </div>
   );
