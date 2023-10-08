@@ -12,6 +12,7 @@ import AddNewBook from "../page/AddNewBook";
 import NewBooks from "../page/NewBooks";
 import UpdateBook from "../page/UpdateBook";
 import BookDetails from "../page/BookDetails";
+import ContactUs from "../page/ContactUs";
 
 const routes = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const routes = createBrowserRouter([
   {
     path: "/updateBook/:id",
     element: <UpdateBook/>
+  },
+  {
+    path: "/contactus",
+    element: <ContactUs/>
   },
   {
     path: "*",

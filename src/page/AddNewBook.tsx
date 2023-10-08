@@ -20,6 +20,7 @@ export default function AddNewBook() {
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     dispatch(addBook({ id: books[books?.length - 1]?.id + 1, title, author, genre, publicationDate, reviews }))
+  
     navigate( "/")
 
   }
