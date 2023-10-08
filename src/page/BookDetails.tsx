@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { getSingleBook } from "../redux/features/book/booksSlice";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase/firebase.auth";
 
 const UpdateBook = () => {
   const { id } = useParams();
@@ -10,7 +12,7 @@ const UpdateBook = () => {
   const selectedBook = books.find((book) => book?.id === Number(id));
   const { title, author, genre, publicationDate, reviews } = selectedBook || {}; 
   const dispatch = useAppDispatch();
-
+  const [user] = useAuthState(auth); 
 
 
   dispatch(
@@ -47,9 +49,14 @@ const UpdateBook = () => {
               {reviews}
             </h1>
             <div className="justify-end card-actions">
-              <Link to={`/updateBook/${id}`}>
-                <button className="btn btn-sm btn-primary">Edit</button>
-              </Link>
+            {
+              user?.email ?  <Link to={`/updateBook/${id}`}>
+              <button className="btn btn-sm btn-primary">Edit</button>
+            </Link> :
+              <Link to="/login">
+              <button className="btn btn-sm btn-primary">Edit</button>
+            </Link>
+            }
              
             </div>
           </div>

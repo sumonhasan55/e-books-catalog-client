@@ -2,11 +2,17 @@ import { Link } from "react-router-dom";
 import { useGetBooksQuery } from "../redux/api/api";
 import { useState } from 'react';
 import Header from "../components/Header";
+import auth from "../firebase/firebase.auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 
 const AllBooks = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const { data, isLoading, isError, error } = useGetBooksQuery(searchQuery);
+
+  
+
+    const [user] = useAuthState(auth);  
     console.log(data,error,isError,isLoading)
     return (
         <div>
@@ -26,7 +32,11 @@ const AllBooks = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-1/2 my-5 input input-bordered md:" />
 
-                        <Link to={"/addNewBook"}><button className="my-3 btn btn-neutral">Add A New Book</button></Link>
+
+                        {
+                            user?.email ? <Link to={"/addNewBook"}><button  id="myButton" className="my-3 btn btn-neutral">Add A New Book</button></Link> :
+                            <Link to={"/login"}><button  id="myButton" className="my-3 btn btn-neutral">Add A New Book</button></Link>
+                        }
                     </div>
                 </div>
 

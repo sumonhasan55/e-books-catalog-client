@@ -1,26 +1,24 @@
 
 import { Link } from 'react-router-dom';
+import auth from '../firebase/firebase.auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 
 
 
 const Header = () => {
-  //   const [loggedIn, setLoggedIn] = useState<boolean>(!!auth.currentUser);
-  //    useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     setLoggedIn(!!user);
-  //   });
-  //   return () => unsubscribe();
-  // }, []);
 
-  // const handleLogout = async () => {
-  //   try {
-  //     await auth.signOut();
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
+  const [user, loading, error] = useAuthState(auth);
+  console.log(user,loading,error)
+
+  const logout = () => {
+    signOut(auth);
+  };
+
+  
 
   return (
+    
     <div className="font-bold text-white bg-neutral-900 navbar">
       <div className="navbar-start">
         <div className="dropdown">
@@ -38,14 +36,19 @@ const Header = () => {
       </div>
       <div className="hidden navbar-center lg:flex ">
         <ul className="px-1 menu menu-horizontal">
-        <li><a>Contact</a></li>
-            <li><a>About</a></li>
-            <li><Link to='/allbooks'>AllBooks</Link></li>
-            <li><Link to='/newbooks'>NewBooks</Link></li>
+          <li><a>Contact</a></li>
+          <li><a>About</a></li>
+          <li><Link to='/allbooks'>AllBooks</Link></li>
+          <li><Link to='/newbooks'>NewBooks</Link></li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn">Login</Link>
+        {
+          user?.email ?
+            <button onClick={logout}>Log out</button> :
+            <Link to="/login" className="btn">Login</Link>
+
+        }
       </div>
     </div>
   );

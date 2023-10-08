@@ -6,13 +6,13 @@ const Registration = () => {
   return (
    <>
      <Header/>
-   <div className="min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
-  <div className="flex-col py-10 hero-content lg:flex-row-reverse b ">
+   <div className="min-h-screen hero bg-gradient-to-r from-violet-500 to-fuchsia-500">
+  <div className="flex-col hero-content lg:flex-row-reverse">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold text-white">Register now!</h1>
       <p className="py-6">If You Get All Services from E-Book Catalog!.plz login Or Register!</p>
     </div>
-    <div className="flex-shrink-0 w-full max-w-sm border-b-8 border-r-8 border-black shadow-2xl card bg-base-100">
+    <div className="flex-shrink-0 w-full max-w-sm border-b-8 border-r-8 border-black shadow-2xl card bg-base-100 ">
       <form className="card-body">
         <div className="form-control">
           <label className="label">
@@ -30,11 +30,11 @@ const Registration = () => {
           </label>
         </div>
         <div className="mt-6 form-control">
-          <button className="btn btn-primary">Registration</button>
+          <button className="btn btn-primary">Register</button>
           
         </div>
       </form>
-    <Link to={"/login"}>  <button className="mx-auto my-5 ml-10 btn btn-active btn-link " >Allready Have an account!</button></Link>
+    <Link to={"/registration"}>  <button className="mx-auto my-5 ml-10 btn btn-active btn-link " >create a new account!</button></Link>
     </div>
   </div>
 </div>
@@ -43,3 +43,4 @@ const Registration = () => {
 };
 
 export default Registration;
+

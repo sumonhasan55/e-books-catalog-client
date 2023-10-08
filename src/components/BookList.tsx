@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { deleteBook } from "../redux/features/book/booksSlice";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase/firebase.auth";
 
 
 const NewBooks = () => {
   const books = useAppSelector((state) => state.books);
   const dispatch = useAppDispatch()
+  const [user] = useAuthState(auth);
 
   const handleDeleteBook = (id: number) => {
 
@@ -29,11 +32,14 @@ const NewBooks = () => {
               <p className="py-2"><span className="font-bold ">Author:</span>{book?.author}</p>
               <p className="py-2"> <span className="font-bold ">Genre:</span>{book?.genre}</p>
               <p className="py-2"><span className="font-bold ">PublicationDate:</span>{book?.publicationDate}</p>
-
-              <Link to={`/updateBook/${book?.id}`}><button className="w-full btn btn-outline btn-info">Edit</button></Link>
-
-
-              <button onClick={() => handleDeleteBook(book?.id)} className="w-full btn btn-outline btn-error">Delete</button>
+              {user?.email ? <Link to={`/updateBook/${book?.id}`}><button className="w-full btn btn-outline btn-info">Edit</button></Link> :
+                <Link to="/login"><button className="w-full btn btn-outline btn-info">Edit</button></Link>
+              }
+              {
+                user?.email ? <button onClick={() => handleDeleteBook(book?.id)} className="w-full btn btn-outline btn-error">Delete</button> :
+                  <Link to="/login"><button className="w-full btn btn-outline btn-error">Delete</button>
+                  </Link>
+              }
 
 
             </div>
