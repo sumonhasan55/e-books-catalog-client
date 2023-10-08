@@ -31,7 +31,7 @@ const UpdateBook = () => {
       <Header />
       <div className="h-screen ">
         <h1 className="my-5 text-2xl font-extrabold text-center">Book Details!</h1>
-        <div className="w-1/2 mx-auto my-10 card bg-neutral text-neutral-content py-9">
+        <div className="mx-auto my-10 w-96 card bg-neutral text-neutral-content py-9">
           <div className="items-center text-center card-body">
             <h2 className="card-title">Title:{title}</h2>
             <p>

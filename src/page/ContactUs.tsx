@@ -10,7 +10,7 @@ const ContactUs = () => {
                 <div className="flex-col hero-content lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold text-white">Contact Us!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="py-6 font-semibold text-white">E-Mail us with any questions or inquiries or call:01303434869,We Would be happy to answer your questions and set a meeting with you.</p>
 
                      <div className="">
                     H M Sumon Hasan 
