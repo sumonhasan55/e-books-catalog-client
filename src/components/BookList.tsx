@@ -21,7 +21,7 @@ const NewBooks = () => {
     <div className="mx-auto " >
 
       <h1 className='my-10 font-mono text-3xl font-extrabold text-center md:font-bold font md:text-5xl'>Top 10 Recently Added Books List </h1>
-      <div className="grid items-center w-full grid-cols-1 mx-auto my-8 ml-12 md:gap-4 md:grid-cols-3">
+      <div className="grid items-center w-full grid-cols-1 mx-auto my-8 md:gap-4 md:grid-cols-3">
 
         {books.map((book, id) => (
 

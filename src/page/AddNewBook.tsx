@@ -29,7 +29,7 @@ export default function AddNewBook() {
   return (
     <>
     <Header/>
-    <div className="w-1/3 p-10 mx-auto my-20 border-2 border-black rounded-xl ">
+    <div className="p-10 m-20 mx-auto my-20 border-2 border-black w-96 rounded-xl ">
       <h1 className="text-3xl font-bold text-center">Add A New Books</h1>
       <form onSubmit={handleSubmit}>
         <div className="my-2">

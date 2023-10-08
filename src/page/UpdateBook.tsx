@@ -38,7 +38,7 @@ const UpdateBook = () => {
     return (
         <>
             <Header />
-            <div className="w-1/3 p-10 mx-auto my-20 border-2 border-black rounded-xl ">
+            <div className="p-10 mx-auto my-20 border-2 border-black w-96 rounded-xl ">
                 <h1 className="text-3xl font-bold text-center">Update Book</h1>
                 <form onSubmit={handleUpdate}>
 
