@@ -39,7 +39,11 @@ const Header = () => {
           <li><a>Contact</a></li>
           <li><a>About</a></li>
           <li><Link to='/allbooks'>AllBooks</Link></li>
-          <li><Link to='/newbooks'>NewBooks</Link></li>
+        {
+          user?.email ?
+          <li><Link to='/newbooks'>NewBooks</Link></li> :
+          <li><Link to='/login'>NewBooks</Link></li>
+        }
         </ul>
       </div>
       <div className="navbar-end">

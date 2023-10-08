@@ -48,7 +48,7 @@ const NewBooks = () => {
         ))}
       </div>
 
-      <Link to="/allbooks" className="w-full bg-black btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg" >AllBooks </Link>
+      <Link to="/allbooks" className="w-full font-extrabold text-white bg-black btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg hove hover:text-black" >AllBooks </Link>
 
     </div>
   );
