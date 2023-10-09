@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import {  useAppSelector } from "../redux/hooks";
 import Header from "../components/Header";
 
@@ -43,8 +43,7 @@ const NewBooks = () => {
                 </tbody>
 
             </table>
-            <Link to= "/addNewBook" className="my-3 btn btn-success">AddNew +</Link>
-            
+          
 
         </div>
     );
