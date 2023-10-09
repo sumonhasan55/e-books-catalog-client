@@ -1,46 +1,91 @@
-import { Link } from "react-router-dom";
-import Header from "../components/Header";
+
+import { useForm } from 'react-hook-form';
+import styles from "../style/Login.module.css";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../firebase/firebase.auth';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Registration = () => {
+
+  const navigate =useNavigate()
+
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+  console.log(user, loading, error)
+
+
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
+
+
+  const onSubmit = async (data:any) => {
+    try {
+      await  createUserWithEmailAndPassword(data.email, data.password);
+      navigate(-1); // Navigate back to the previous page
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
+
+
+
   return (
-   <>
-     <Header/>
-   <div className="min-h-screen hero bg-gradient-to-r from-violet-500 to-fuchsia-500">
-  <div className="flex-col hero-content lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold text-white">Register now!</h1>
-      <p className="py-6">If You Get All Services from E-Book Catalog!.plz login Or Register!</p>
-    </div>
-    <div className="flex-shrink-0 w-full max-w-sm border-b-8 border-r-8 border-black shadow-2xl card bg-base-100 ">
-      <form className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+    <>
+      <Header />
+      <div className="min-h-screen hero bg-gradient-to-r from-violet-500 to-fuchsia-500">
+        <div className={styles.form}>
+          <h3 className='my-5 text-5xl font-bold'>Register!</h3>
+          <hr />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="">Your Email</label>
+            <input {...register('email', { required: true })} type="email" className='text-black bg-white '/>
+            <label htmlFor="">Your Password</label>
+            <input {...register('password', { required: true })} type="password" className='text-black bg-white '  />
+            <button className='btn btn-primary ' type="submit">Register</button><br></br><br></br>
+            <Link to="/login" className="my-5 mt-5 underline">Already Have An Account?</Link>
+           
+          </form>
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input type="password" placeholder="password" className="input input-bordered" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
-        </div>
-        <div className="mt-6 form-control">
-          <button className="btn btn-primary">Register</button>
-          
-        </div>
-      </form>
-    <Link to={"/registration"}>  <button className="mx-auto my-5 ml-10 btn btn-active btn-link " >create a new account!</button></Link>
-    </div>
-  </div>
-</div>
-   </>
+       
+      </div>
+      <Footer/>
+    
+    </>
   );
 };
 
+
 export default Registration;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
